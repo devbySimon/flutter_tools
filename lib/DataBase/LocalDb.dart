@@ -1,4 +1,4 @@
-library tools;
+library flutter_tools;
 
 import 'dart:io';
 
