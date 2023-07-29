@@ -1,7 +1,7 @@
 library flutter_tools;
 
 import 'package:flutter/material.dart';
-import 'package:tools/UiPrefabs/TextFieldTitle.dart';
+import 'package:flutter_tools/UiPrefabs/TextFieldTitle.dart';
 
 Widget BySimonCheckbox({String text = "", onChanged, value})  {
 
