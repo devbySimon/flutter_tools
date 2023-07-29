@@ -2,7 +2,7 @@ class UnityContainer {
 
   static UnityContainer? _instance;
 
-  static getInstance() {
+  static UnityContainer getInstance() {
 
     _instance ??= UnityContainer._();
 
