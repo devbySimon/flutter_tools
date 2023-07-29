@@ -1,3 +1,5 @@
+library flutter_tools;
+
 import 'package:flutter/material.dart';
 
 class BySimonTextButton extends ElevatedButton {
