@@ -11,7 +11,10 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
     return data;
   }
 
-  T fromJson(Map<String, Object?> jsonObjects);
+  T fromJson(Map<String, Object?> jsonObjects) {
+
+    return T.fromJson(jsonObjects);
+  }
 
   Future<int> LoadFromStorage() async {
 
@@ -48,7 +51,10 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
     await batch.commit();
   }
 
-  String ToJson(T item);
+  String ToJson(T item) {
+
+    return json.encode(item.toJson());
+  }
 
   Future<void> _ErstelleTabelleFallsNichtVorhanden(var db) async {
 
