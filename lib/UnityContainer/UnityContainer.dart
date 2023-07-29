@@ -8,7 +8,7 @@ class UnityContainer {
 
     _instance ??= UnityContainer._();
 
-    return _instance;
+    return _instance!;
   }
 
   UnityContainer._();
