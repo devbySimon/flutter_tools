@@ -27,6 +27,9 @@ Future<Database> GetLocalStorage() async {
     } else {
 
       var databasesPath = await getDatabasesPath();
+      if (debugDatabasePath != null) {
+        databasesPath = debugDatabasePath!;
+      }
       final path = '${databasesPath}database.db';
 
       try {
