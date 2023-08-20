@@ -26,9 +26,7 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
       var whereClause = "";
       var whereArgs = [];
       for (var whereItem in optionalTableConditions!.entries) {
-        if (whereClause.isEmpty) {
-          whereClause += "WHERE ";
-        } else {
+        if (whereClause.isNotEmpty) {
           whereClause += "AND ";
         }
 
@@ -64,9 +62,7 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
       var whereClause = "";
       var whereArgs = [];
       for (var whereItem in optionalTableConditions!.entries) {
-        if (whereClause.isEmpty) {
-          whereClause += "WHERE ";
-        } else {
+        if (whereClause.isNotEmpty) {
           whereClause += "AND ";
         }
 
