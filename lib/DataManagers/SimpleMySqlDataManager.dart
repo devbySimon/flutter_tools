@@ -9,6 +9,8 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
 
   List<T> data = [];
 
+  Map<String, String>? optionalTableConditions;
+
   List<T> FetchAll() {
     return data;
   }
@@ -18,7 +20,26 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
     var db = await GetLocalStorage();
     await _ErstelleTabelleFallsNichtVorhanden(db);
 
-    var result = await db.query(T.toString());
+    List<Map<String, Object?>> result;
+    if (optionalTableConditions != null) {
+
+      var whereClause = "";
+      var whereArgs = [];
+      for (var whereItem in optionalTableConditions!.entries) {
+        if (whereClause.isEmpty) {
+          whereClause += "WHERE ";
+        } else {
+          whereClause += "AND ";
+        }
+
+        whereClause += "${whereItem.key} = ?";
+        whereArgs.add(whereItem.value);
+      }
+
+      result = await db.query(T.toString(), where: whereClause, whereArgs: whereArgs);
+    } else {
+      result = await db.query(T.toString(), );
+    }
 
     for (final row in result) {
       var neuesItem = fromJson(json.decode(row["value"]!.toString()));
@@ -37,12 +58,40 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
 
     var batch = db.batch();
 
-    batch.delete(T.toString());
+    List<Map<String, Object?>> result;
+    if (optionalTableConditions != null) {
 
-    for (T item in data) {
-      batch.insert(T.toString(), {
-        "value": ToJson(item)
-      });
+      var whereClause = "";
+      var whereArgs = [];
+      for (var whereItem in optionalTableConditions!.entries) {
+        if (whereClause.isEmpty) {
+          whereClause += "WHERE ";
+        } else {
+          whereClause += "AND ";
+        }
+
+        whereClause += "${whereItem.key} = ?";
+        whereArgs.add(whereItem.value);
+      }
+
+      batch.delete(T.toString(), where: whereClause, whereArgs: whereArgs);
+
+      for (T item in data) {
+        batch.insert(T.toString(), {
+          "value": ToJson(item),
+
+          for (var entry in optionalTableConditions!.entries)
+            entry.key: entry.value,
+        });
+      }
+    } else {
+      batch.delete(T.toString());
+
+      for (T item in data) {
+        batch.insert(T.toString(), {
+          "value": ToJson(item)
+        });
+      }
     }
 
     await batch.commit();
@@ -54,10 +103,17 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
 
   Future<void> _ErstelleTabelleFallsNichtVorhanden(var db) async {
 
+    String additionalColumnsToCreate = "";
+    if (optionalTableConditions != null) {
+      for (var whereItem in optionalTableConditions!.entries) {
+        additionalColumnsToCreate += ", ${whereItem.key} text";
+      }
+    }
+
     await db.execute("""
     CREATE TABLE IF NOT EXISTS ${T.toString()} (
       lfdnr integer primary key AUTOINCREMENT,
-      value text
+      value text $additionalColumnsToCreate
     )
     """);
   }
