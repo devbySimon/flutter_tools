@@ -39,12 +39,16 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
       result = await db.query(T.toString(), );
     }
 
+    int addedCount = 0;
     for (final row in result) {
       var neuesItem = fromJson(json.decode(row["value"]!.toString()));
 
-      data.add(neuesItem);
+      if (!Exists(data, neuesItem)) {
+        data.add(neuesItem);
+        addedCount++;
+      }
     }
-    print("${data.length} ${T.toString()} aus dem Speicher geladen.");
+    print("$addedCount ${T.toString()} aus dem Speicher geladen.");
 
     return data.length;
   }
@@ -96,6 +100,8 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
   String ToJson(T item);
 
   T fromJson(Map<String, Object?> jsonObjects);
+
+  bool Exists(List<T> data, T item);
 
   Future<void> _ErstelleTabelleFallsNichtVorhanden(var db) async {
 
