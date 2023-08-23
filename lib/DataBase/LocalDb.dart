@@ -30,7 +30,7 @@ Future<Database> GetLocalStorage() async {
       if (debugDatabasePath != null) {
         databasesPath = debugDatabasePath!;
       }
-      final path = '${databasesPath}database.db';
+      final path = '${databasesPath}/database.db';
 
       try {
         await Directory(databasesPath).create(recursive: true);
