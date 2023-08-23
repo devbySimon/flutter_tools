@@ -50,7 +50,7 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
     }
     print("$addedCount ${T.toString()} aus dem Speicher geladen.");
 
-    return data.length;
+    return addedCount;
   }
 
   Future<void> SaveToStorage() async {
