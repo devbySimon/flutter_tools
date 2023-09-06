@@ -7,12 +7,12 @@ import 'DataManager.dart';
 
 abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
 
-  List<T> data = [];
+  List<T> _data = [];
 
   Map<String, String>? optionalTableConditions;
 
-  List<T> FetchAll() {
-    return data;
+  List<T> Get() {
+    return _data;
   }
 
   Future<int> LoadFromStorage() async {
@@ -43,8 +43,8 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
     for (final row in result) {
       var neuesItem = fromJson(json.decode(row["value"]!.toString()));
 
-      if (!Exists(data, neuesItem)) {
-        data.add(neuesItem);
+      if (!Exists(_data, neuesItem)) {
+        _data.add(neuesItem);
         addedCount++;
       }
     }
@@ -76,7 +76,7 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
 
       batch.delete(T.toString(), where: whereClause, whereArgs: whereArgs);
 
-      for (T item in data) {
+      for (T item in _data) {
         batch.insert(T.toString(), {
           "value": ToJson(item),
 
@@ -87,7 +87,7 @@ abstract class SimpleMySqlDataManager<T> extends DataManager<T> {
     } else {
       batch.delete(T.toString());
 
-      for (T item in data) {
+      for (T item in _data) {
         batch.insert(T.toString(), {
           "value": ToJson(item)
         });

@@ -6,7 +6,5 @@ abstract class DataManager<T> {
 
   Future<int> Synchronise();
 
-  T? Fetch({Object? filter});
-
-  List<T> FetchAll();
+  List<T> Get();
 }
