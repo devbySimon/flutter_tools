@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 DecoratedBox BySimonDecoratedBox(BuildContext context, Widget child) {
   return DecoratedBox(
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(16)),
         gradient: LinearGradient(
             colors: [
               Theme.of(context).colorScheme.primary,
@@ -13,12 +14,12 @@ DecoratedBox BySimonDecoratedBox(BuildContext context, Widget child) {
               Theme.of(context).colorScheme.tertiary,
               //add more colors
             ]),
-        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(2),
         child: DecoratedBox(
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
             color: Theme.of(context).colorScheme.background,
           ),
           child: Padding(
