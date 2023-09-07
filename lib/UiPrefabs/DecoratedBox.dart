@@ -16,11 +16,11 @@ DecoratedBox BySimonDecoratedBox(BuildContext context, Widget child) {
             ]),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(2),
+        padding: const EdgeInsets.all(4),
         child: DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(16)),
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.surface,
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
