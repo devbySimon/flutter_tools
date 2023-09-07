@@ -3,7 +3,7 @@ library flutter_tools;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-Widget BySimonDropDownButton(dynamic initialValue, List<DropdownMenuItem<Object>>? items, onChangedAction) {
+Widget BySimonDropDownButton(Object? initialValue, List<DropdownMenuItem<Object>>? items, onChangedAction) {
 
   return DecoratedBox(
     decoration: BoxDecoration(
