@@ -10,6 +10,7 @@ export 'UiPrefabs/Button.dart';
 export 'UiPrefabs/Card.dart';
 export 'UiPrefabs/Checkbox.dart';
 export 'UiPrefabs/DateTime.dart';
+export 'UiPrefabs/DecoratedBox.dart';
 export 'UiPrefabs/DropDownButton.dart';
 export 'UiPrefabs/TextField.dart';
 export 'UiPrefabs/TextFieldTitle.dart';

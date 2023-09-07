@@ -2,26 +2,20 @@ library flutter_tools;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_tools/UiPrefabs/DecoratedBox.dart';
 
-Widget BySimonCard(Widget child) {
+Widget BySimonCard(BuildContext context, Widget child) {
 
   return AnimatedSize(
         duration: 250.milliseconds,
-        child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(16)),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: child,
-        )
-    ),
+        child: BySimonDecoratedBox(context, child),
   );
 }
 
-Widget BySimonCardWrap(List<Widget> children) {
+Widget BySimonCardWrap(BuildContext context, List<Widget> children) {
 
   return BySimonCard(
+      context,
       Wrap(
         spacing: 20,
         runSpacing: 20,
@@ -30,9 +24,10 @@ Widget BySimonCardWrap(List<Widget> children) {
   );
 }
 
-Widget BySimonCardList(List<Widget> children) {
+Widget BySimonCardList(BuildContext context, List<Widget> children) {
 
   return BySimonCard(
+      context,
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: children,
