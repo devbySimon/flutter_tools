@@ -36,29 +36,32 @@ Widget BySimonCardList(BuildContext context, List<Widget> children) {
   );
 }
 
-Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> children, String buttonText) {
+Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> children, String buttonText, Function() onTap) {
 
-  return BySimonDecoratedBoxFilledNoInnerPadding(
-      context,
-      Row(
-        children: [
-          Expanded(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
-                color: Theme.of(context).colorScheme.surface,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: children,
+  return GestureDetector(
+    onTap: onTap,
+    child: BySimonDecoratedBoxFilledNoInnerPadding(
+        context,
+        Row(
+          children: [
+            Expanded(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: children,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox.fromSize(size: Size.square(4),),
-          BySimonTextTitle(buttonText),
-        ],
-      )
+            SizedBox.fromSize(size: Size.square(4),),
+            BySimonTextTitle(buttonText),
+          ],
+        )
+    ),
   );
 }
