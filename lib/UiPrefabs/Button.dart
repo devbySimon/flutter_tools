@@ -1,6 +1,7 @@
 library flutter_tools;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tools/flutter_tools.dart';
 
 class BySimonTextButton extends ElevatedButton {
 
@@ -24,5 +25,17 @@ class BySimonTextButton extends ElevatedButton {
         ),
         tapTargetSize: MaterialTapTargetSize.padded,
       )
+  );
+}
+
+Widget BySimonButton(BuildContext context, Widget innerChild, {Function()? onTap, Function()? onDoubleTap, Function()? onLongPress}) {
+
+  return GestureDetector(
+    onTap: onTap,
+    onDoubleTap: onDoubleTap,
+    onLongPress: onLongPress,
+    child: BySimonDecoratedBox(
+        context,
+        innerChild),
   );
 }
