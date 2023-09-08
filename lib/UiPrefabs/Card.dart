@@ -36,7 +36,7 @@ Widget BySimonCardList(BuildContext context, List<Widget> children) {
   );
 }
 
-Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> children, String buttonText, Function() onTap) {
+Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> children, Widget buttonWidget, Function() onTap) {
 
   return GestureDetector(
     onTap: onTap,
@@ -60,7 +60,7 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: BySimonTextTitle(buttonText),
+              child: buttonWidget,
             ),
           ],
         )
