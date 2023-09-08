@@ -34,7 +34,7 @@ Widget BySimonButton(BuildContext context, Widget innerChild, {Function()? onTap
     onTap: onTap,
     onDoubleTap: onDoubleTap,
     onLongPress: onLongPress,
-    child: BySimonDecoratedBox(
+    child: BySimonDecoratedBoxFilled(
         context,
         innerChild),
   );
