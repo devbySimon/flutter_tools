@@ -8,13 +8,10 @@ Widget BySimonDropDownButton(BuildContext context, Object? initialValue, List<Dr
 
   return BySimonDecoratedBoxFilled(
     context,
-    Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: DropdownButton(
-          value: initialValue,
-          items: items,
-          onChanged: onChangedAction
-      ),
+    DropdownButton(
+        value: initialValue,
+        items: items,
+        onChanged: onChangedAction
     ),
   );
 }
