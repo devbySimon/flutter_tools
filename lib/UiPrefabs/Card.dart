@@ -47,7 +47,7 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
             Expanded(
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  borderRadius: BorderRadius.all(Radius.circular(14)),
                   color: Theme.of(context).colorScheme.surface,
                 ),
                 child: Padding(
