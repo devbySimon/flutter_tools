@@ -20,6 +20,6 @@ class BySimonTextDescription extends Text {
 class BySimonTextSmall extends Text {
 
   BySimonTextSmall(super.data) : super(
-    textScaleFactor: 0.9,
+    textScaleFactor: 0.8,
   );
 }
