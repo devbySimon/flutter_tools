@@ -8,10 +8,19 @@ Widget BySimonDropDownButton(BuildContext context, Object? initialValue, List<Dr
 
   return BySimonDecoratedBoxNoInnerPadding(
     context,
-    DropdownButton(
-        value: initialValue,
-        items: items,
-        onChanged: onChangedAction
+    Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+      child: DropdownButton(
+          value: initialValue,
+          items: items,
+          onChanged: onChangedAction,
+          icon: const Padding(
+              padding: EdgeInsets.only(left:20),
+              child:Icon(Icons.expand_circle_down)
+          ),
+          underline: Container(),
+          //isExpanded: true,
+      ),
     ),
   );
 }
