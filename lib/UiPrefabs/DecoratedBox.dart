@@ -37,12 +37,12 @@ DecoratedBox BySimonDecoratedBoxFilledNoInnerPadding(BuildContext context, Widge
         borderRadius: BorderRadius.all(Radius.circular(16)),
         gradient: LinearGradient(
             colors: [
-              if (slightOutline) ...[
+              if (!slightOutline) ...[
                 Theme.of(context).colorScheme.primary,
                 Theme.of(context).colorScheme.secondary,
                 Theme.of(context).colorScheme.tertiary,
               ],
-              if (!slightOutline) ...[
+              if (slightOutline) ...[
                 Theme.of(context).colorScheme.shadow,
                 Theme.of(context).colorScheme.shadow,
               ],
