@@ -44,6 +44,7 @@ DecoratedBox BySimonDecoratedBoxFilledNoInnerPadding(BuildContext context, Widge
               ],
               if (!slightOutline) ...[
                 Theme.of(context).colorScheme.shadow,
+                Theme.of(context).colorScheme.shadow,
               ],
               //add more colors
             ]),
