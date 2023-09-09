@@ -5,15 +5,15 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_tools/UiPrefabs/DecoratedBox.dart';
 import 'package:flutter_tools/flutter_tools.dart';
 
-Widget BySimonCard(BuildContext context, Widget child) {
+Widget BySimonCard(BuildContext context, Widget child, {bool slightOutline = false}) {
 
   return AnimatedSize(
         duration: 250.milliseconds,
-        child: BySimonDecoratedBox(context, child),
+        child: BySimonDecoratedBox(context, child, slightOutline: slightOutline),
   );
 }
 
-Widget BySimonCardWrap(BuildContext context, List<Widget> children) {
+Widget BySimonCardWrap(BuildContext context, List<Widget> children, {bool slightOutline = false}) {
 
   return BySimonCard(
       context,
@@ -21,18 +21,20 @@ Widget BySimonCardWrap(BuildContext context, List<Widget> children) {
         spacing: 20,
         runSpacing: 20,
         children: children,
-      )
+      ),
+      slightOutline: slightOutline,
   );
 }
 
-Widget BySimonCardList(BuildContext context, List<Widget> children) {
+Widget BySimonCardList(BuildContext context, List<Widget> children, {bool slightOutline = false}) {
 
   return BySimonCard(
       context,
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: children,
-      )
+      ),
+      slightOutline: slightOutline,
   );
 }
 
