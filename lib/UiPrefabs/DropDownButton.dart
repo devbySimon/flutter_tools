@@ -6,7 +6,7 @@ import 'package:flutter_tools/UiPrefabs/DecoratedBox.dart';
 
 Widget BySimonDropDownButton(BuildContext context, Object? initialValue, List<DropdownMenuItem<Object>>? items, onChangedAction) {
 
-  return BySimonDecoratedBoxFilled(
+  return BySimonDecoratedBoxNoInnerPadding(
     context,
     DropdownButton(
         value: initialValue,

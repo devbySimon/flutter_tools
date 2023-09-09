@@ -20,6 +20,20 @@ DecoratedBox BySimonDecoratedBox(BuildContext context, Widget child, {bool sligh
   );
 }
 
+DecoratedBox BySimonDecoratedBoxNoInnerPadding(BuildContext context, Widget child, {bool slightOutline = false}) {
+  return BySimonDecoratedBoxFilledNoInnerPadding(
+    context,
+    DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(16)),
+        color: Theme.of(context).colorScheme.surface,
+      ),
+      child: child,
+    ),
+    slightOutline: slightOutline,
+  );
+}
+
 DecoratedBox BySimonDecoratedBoxFilled(BuildContext context, Widget child, {bool slightOutline = false}) {
   return BySimonDecoratedBoxFilledNoInnerPadding(
     context,
