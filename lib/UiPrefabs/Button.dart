@@ -28,14 +28,14 @@ class BySimonTextButton extends ElevatedButton {
   );
 }
 
-Widget BySimonButton(BuildContext context, Widget innerChild, {Function()? onTap, Function()? onDoubleTap, Function()? onLongPress}) {
+Widget BySimonButton(BuildContext context, Widget innerChild, {Function()? onTap, Function()? onDoubleTap, Function()? onLongPress, bool filled = true}) {
 
   return GestureDetector(
     onTap: onTap,
     onDoubleTap: onDoubleTap,
     onLongPress: onLongPress,
-    child: BySimonDecoratedBoxFilled(
+    child: filled ? BySimonDecoratedBoxFilled(
         context,
-        innerChild),
+        innerChild) : BySimonDecoratedBox(context, innerChild),
   );
 }
