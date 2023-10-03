@@ -55,7 +55,7 @@ class _BySimonSplitterState extends State<BySimonSplitter> {
     );
 
     if (widget.withScrolling) {
-      return BySimonCard(
+      return BySimonDecoratedBoxNotFilled(
         context,
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -63,7 +63,7 @@ class _BySimonSplitterState extends State<BySimonSplitter> {
         )
       );
     } else {
-      return BySimonCard(
+      return BySimonDecoratedBoxNotFilled(
         context,
         child
       );
