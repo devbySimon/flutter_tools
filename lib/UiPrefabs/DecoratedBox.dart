@@ -68,7 +68,10 @@ DecoratedBox BySimonDecoratedBoxFilled(BuildContext context, Widget child, {bool
             ]),
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
-      child: child
+      child: Padding(
+        padding: const EdgeInsets.all(2),
+        child: child,
+      )
   );
 }
 
