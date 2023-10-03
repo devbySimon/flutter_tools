@@ -38,15 +38,16 @@ Widget BySimonCardList(BuildContext context, List<Widget> children, {bool slight
   );
 }
 
-Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> children, Widget buttonWidget, Function() onTap) {
+Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> children, Widget buttonWidget,
+    {Function()? onTapDetails, Function()? onTapButton}) {
 
-  return GestureDetector(
-    onTap: onTap,
-    child: BySimonDecoratedBoxFilledNoInnerPadding(
-        context,
-        Row(
-          children: [
-            Expanded(
+  return BySimonDecoratedBoxFilled(
+      context,
+      Row(
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: onTapDetails,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -60,12 +61,15 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
                 ),
               ),
             ),
-            Padding(
+          ),
+          GestureDetector(
+            onTap: onTapButton,
+            child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: buttonWidget,
             ),
-          ],
-        )
-    ),
+          ),
+        ],
+      )
   );
 }
