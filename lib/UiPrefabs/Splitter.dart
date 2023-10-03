@@ -10,16 +10,15 @@ class BySimonSplitter extends StatefulWidget {
   List<IconData>? iconsToShow;
   Function(int) onItemSelected;
   bool withScrolling;
+  int startIndex;
 
-  BySimonSplitter({this.textsToShow, this.iconsToShow, required this.onItemSelected, this.withScrolling = false});
+  BySimonSplitter({this.textsToShow, this.iconsToShow, required this.startIndex, required this.onItemSelected, this.withScrolling = false});
 
   @override
   State<StatefulWidget> createState() => _BySimonSplitterState();
 }
 
 class _BySimonSplitterState extends State<BySimonSplitter> {
-
-  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +30,13 @@ class _BySimonSplitterState extends State<BySimonSplitter> {
         if (widget.textsToShow != null)
           for (var text in widget.textsToShow!)
             TextButton(
-              child: Text(text, style: TextStyle(color: _currentIndex == widget.textsToShow!.indexOf(text) ?
+              child: Text(text, style: TextStyle(color: widget.startIndex == widget.textsToShow!.indexOf(text) ?
               Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)),
               onPressed: () {
                 setState(() {
-                  _currentIndex = widget.textsToShow!.indexOf(text);
+                  widget.startIndex = widget.textsToShow!.indexOf(text);
                 });
-                widget.onItemSelected(_currentIndex);
+                widget.onItemSelected(widget.startIndex);
               },
             ),
 
@@ -45,11 +44,11 @@ class _BySimonSplitterState extends State<BySimonSplitter> {
           for (var iconData in widget.iconsToShow!)
             IconButton(onPressed: () {
               setState(() {
-                _currentIndex = widget.iconsToShow!.indexOf(iconData);
+                widget.startIndex = widget.iconsToShow!.indexOf(iconData);
               });
-              widget.onItemSelected(_currentIndex);
+              widget.onItemSelected(widget.startIndex);
             },
-                icon: Icon(iconData, color: _currentIndex == widget.iconsToShow!.indexOf(iconData) ?
+                icon: Icon(iconData, color: widget.startIndex == widget.iconsToShow!.indexOf(iconData) ?
                 Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)
             ),
       ],
