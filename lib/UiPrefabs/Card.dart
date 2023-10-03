@@ -46,13 +46,13 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
       Row(
         children: [
           Expanded(
-            child: GestureDetector(
-              onTap: onTapDetails,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  color: Theme.of(context).colorScheme.surface,
-                ),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                color: Theme.of(context).colorScheme.surface,
+              ),
+              child: GestureDetector(
+                onTap: onTapDetails,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -64,7 +64,10 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
           ),
           GestureDetector(
             onTap: onTapButton,
-            child: buttonWidget,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: buttonWidget,
+            ),
           ),
         ],
       )
