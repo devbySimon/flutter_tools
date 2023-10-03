@@ -33,27 +33,28 @@ class _BySimonSplitterState extends State<BySimonSplitter> {
 
             if (widget.textsToShow != null)
               for (var text in widget.textsToShow!)
-                                      IconButton(onPressed: () {
-                                        setState(() {
-                                          _currentIndex = widget.textsToShow!.indexOf(text);
-                                        });
-                                        widget.onItemSelected(_currentIndex);
-                                      },
-                                          icon: Text(text, style: TextStyle(color: _currentIndex == widget.textsToShow!.indexOf(text) ?
-                                          Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline))
-                                      ),
+                TextButton(
+                  child: Text(text, style: TextStyle(color: _currentIndex == widget.textsToShow!.indexOf(text) ?
+                  Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)),
+                  onPressed: () {
+                    setState(() {
+                      _currentIndex = widget.textsToShow!.indexOf(text);
+                    });
+                    widget.onItemSelected(_currentIndex);
+                  },
+                ),
 
             if (widget.iconsToShow != null)
               for (var iconData in widget.iconsToShow!)
-                                      IconButton(onPressed: () {
-                                        setState(() {
-                                          _currentIndex = widget.iconsToShow!.indexOf(iconData);
-                                        });
-                                        widget.onItemSelected(_currentIndex);
-                                      },
-                                          icon: Icon(iconData, color: _currentIndex == widget.iconsToShow!.indexOf(iconData) ?
-                                          Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)
-                                      ),
+                IconButton(onPressed: () {
+                  setState(() {
+                    _currentIndex = widget.iconsToShow!.indexOf(iconData);
+                  });
+                  widget.onItemSelected(_currentIndex);
+                },
+                    icon: Icon(iconData, color: _currentIndex == widget.iconsToShow!.indexOf(iconData) ?
+                    Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)
+                ),
           ],
         ),
       ),
