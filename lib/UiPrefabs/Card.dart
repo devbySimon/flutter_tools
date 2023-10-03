@@ -53,11 +53,8 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   color: Theme.of(context).colorScheme.surface,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: children,
-                  ),
+                child: Column(
+                  children: children,
                 ),
               ),
             ),
