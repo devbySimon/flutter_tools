@@ -53,18 +53,18 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   color: Theme.of(context).colorScheme.surface,
                 ),
-                child: Column(
-                  children: children,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: children,
+                  ),
                 ),
               ),
             ),
           ),
           GestureDetector(
             onTap: onTapButton,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: buttonWidget,
-            ),
+            child: buttonWidget,
           ),
         ],
       )
