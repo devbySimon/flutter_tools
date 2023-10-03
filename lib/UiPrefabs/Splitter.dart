@@ -28,7 +28,7 @@ class _BySimonSplitterState extends State<BySimonSplitter> {
       SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
 
             if (widget.textsToShow != null)
