@@ -2,9 +2,10 @@ library flutter_tools;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 DecoratedBox BySimonDecoratedBox(BuildContext context, Widget child, {bool slightOutline = false}) {
-  return BySimonDecoratedBoxFilledNoInnerPadding(
+  return BySimonDecoratedBoxNotFilled(
     context,
     DecoratedBox(
       decoration: BoxDecoration(
@@ -21,7 +22,7 @@ DecoratedBox BySimonDecoratedBox(BuildContext context, Widget child, {bool sligh
 }
 
 DecoratedBox BySimonDecoratedBoxNoInnerPadding(BuildContext context, Widget child, {bool slightOutline = false}) {
-  return BySimonDecoratedBoxFilledNoInnerPadding(
+  return BySimonDecoratedBoxNotFilled(
     context,
     DecoratedBox(
       decoration: BoxDecoration(
@@ -35,20 +36,23 @@ DecoratedBox BySimonDecoratedBoxNoInnerPadding(BuildContext context, Widget chil
 }
 
 DecoratedBox BySimonDecoratedBoxFilled(BuildContext context, Widget child, {bool slightOutline = false}) {
-  return BySimonDecoratedBoxFilledNoInnerPadding(
-    context,
-    Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: child,
-    ),
-    slightOutline: slightOutline,
-  );
-}
-
-DecoratedBox BySimonDecoratedBoxFilledNoInnerPadding(BuildContext context, Widget child, {bool slightOutline = false}) {
   return DecoratedBox(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(16)),
+        border: GradientBoxBorder(
+          gradient: LinearGradient(
+              colors: [
+                if (!slightOutline) ...[
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.secondary,
+                  Theme.of(context).colorScheme.tertiary,
+                ],
+                if (slightOutline) ...[
+                  Theme.of(context).colorScheme.shadow,
+                  Theme.of(context).colorScheme.shadow,
+                ],
+                //add more colors
+              ])
+        ),
         gradient: LinearGradient(
             colors: [
               if (!slightOutline) ...[
@@ -62,6 +66,31 @@ DecoratedBox BySimonDecoratedBoxFilledNoInnerPadding(BuildContext context, Widge
               ],
               //add more colors
             ]),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
+      ),
+      child: child
+  );
+}
+
+DecoratedBox BySimonDecoratedBoxNotFilled(BuildContext context, Widget child, {bool slightOutline = false}) {
+  return DecoratedBox(
+      decoration: BoxDecoration(
+        border: GradientBoxBorder(
+            gradient: LinearGradient(
+                colors: [
+                  if (!slightOutline) ...[
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.secondary,
+                    Theme.of(context).colorScheme.tertiary,
+                  ],
+                  if (slightOutline) ...[
+                    Theme.of(context).colorScheme.shadow,
+                    Theme.of(context).colorScheme.shadow,
+                  ],
+                  //add more colors
+                ])
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
       child: Padding(
         padding: const EdgeInsets.all(4),
