@@ -47,7 +47,7 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: onTapDetails ?? onTapButton,
+              onTap: onTapDetails,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
