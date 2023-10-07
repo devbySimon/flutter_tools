@@ -29,27 +29,33 @@ class _BySimonSplitterState extends State<BySimonSplitter> {
 
         if (widget.textsToShow != null)
           for (var text in widget.textsToShow!)
-            TextButton(
-              child: Text(text, style: TextStyle(color: widget.startIndex == widget.textsToShow!.indexOf(text) ?
-              Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)),
-              onPressed: () {
-                setState(() {
-                  widget.startIndex = widget.textsToShow!.indexOf(text);
-                });
-                widget.onItemSelected(widget.startIndex);
-              },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextButton(
+                child: Text(text, style: TextStyle(color: widget.startIndex == widget.textsToShow!.indexOf(text) ?
+                Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)),
+                onPressed: () {
+                  setState(() {
+                    widget.startIndex = widget.textsToShow!.indexOf(text);
+                  });
+                  widget.onItemSelected(widget.startIndex);
+                },
+              ),
             ),
 
         if (widget.iconsToShow != null)
           for (var iconData in widget.iconsToShow!)
-            IconButton(onPressed: () {
-              setState(() {
-                widget.startIndex = widget.iconsToShow!.indexOf(iconData);
-              });
-              widget.onItemSelected(widget.startIndex);
-            },
-                icon: Icon(iconData, color: widget.startIndex == widget.iconsToShow!.indexOf(iconData) ?
-                Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(onPressed: () {
+                setState(() {
+                  widget.startIndex = widget.iconsToShow!.indexOf(iconData);
+                });
+                widget.onItemSelected(widget.startIndex);
+              },
+                  icon: Icon(iconData, color: widget.startIndex == widget.iconsToShow!.indexOf(iconData) ?
+                  Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.outline)
+              ),
             ),
       ],
     );
