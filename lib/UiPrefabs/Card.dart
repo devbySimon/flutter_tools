@@ -39,7 +39,7 @@ Widget BySimonCardList(BuildContext context, List<Widget> children, {bool slight
 }
 
 Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> children, IconData buttonIcon,
-    {Function()? onTapDetails, Function()? onTapButton}) {
+    {Function()? onTapDetails, Function()? onTapButton, Function()? onTap}) {
 
   return BySimonDecoratedBoxNotFilled(
       context,
@@ -47,7 +47,7 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: onTapDetails,
+              onTap: onTapDetails ?? onTap,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
@@ -57,7 +57,7 @@ Widget BySimonCardColumnWithTextButtonOnSide(BuildContext context, List<Widget> 
             ),
           ),
           GestureDetector(
-            onTap: onTapButton,
+            onTap: onTapButton ?? onTap,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Icon(buttonIcon, color: Theme.of(context).colorScheme.primary,),
